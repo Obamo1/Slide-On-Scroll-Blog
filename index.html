@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Slide on Scroll Portfolio</title>
+</head>
+<body>
+
+  <div class="site-wrap">
+
+    <h1>MY PORTFOLIO</h1>
+
+    <p class="fst-italic">I'm Joseph Obamo a trainer and installer in both solar inverter system(renewable energy) and Closed Circuit Television cameras (remote survelliance system). I also have a skills in graphics design, networking and front end web development.
+    </p>
+
+    <img src="img/Jossy1.jpg" class="align-left slide-in">
+
+    <p>I'm Graphics Designer, Network Adminstrator, Renewable energy system Instructor & Installer (i.e solar&inverter system), Remote survelliance system Instructor & Installer (i.e CCTV Camera)</p>
+
+    <img src="img/Jossy2.jpg" class="align-right slide-in">
+
+    
+    <!-- ======= Resume Section ======= -->
+    <section id="resume" class="resume">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>RESUME</h2>
+          <p>To be optimistic, highly motivated to deliver excellent results to transform and make a positive impact in any environment I find myself through teamwork, determination and hard work while contributing immensely to the achievement of organizations aims and objectives. </p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6" data-aos="fade-up">
+            <h3 class="resume-title">Sumary</h3>
+            <div class="resume-item pb-0">
+              <h4>Joseph Obamo</h4>
+              <p><em>Innovative and deadline-driven Network administrator, graphics designer and solar inverter installer and instructor with over 1+ years of experience. </em></p>
+              <ul>
+                <li>Isolo, Akure, Ondo State, Nigeria.</li>
+                <li>(+234) 8137272052</li>
+                <li>joobamo@gmail.com</li>
+              </ul>
+            </div>
+            <img src="img/Jossy3.jpg" class="align-right slide-in">
+
+            <h3 class="resume-title">Education</h3>
+           <div class="resume-item">
+              <h4>Bachelor of Technology in Computer Science</h4>
+              <h5>2014 - 2018</h5>
+              <p><em>Federal University of Technology, Akure (FUTA)</em></p>
+            </div>
+            <div class="resume-item">
+              <h4>National Diploma in Computer Science</h4>
+              <h5>2011 - 2013</h5>
+              <p><em>Kogi State Polythenic, Lokoja</em></p>
+            </div>
+           
+          </div>
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <h3 class="resume-title">Professional Experience</h3>
+            <div class="resume-item">
+              <h4>Technical/Network Support Officer</h4>
+              <h5>2020 - till now</h5>
+              <p><em>Shokenny Solutions Limited </em></p>
+            </div>
+            <div class="resume-item">
+              <h4>Renewable Energy Syster(Solar Inverter system) and Remote survelliance system(CCTV Camera) Instructor</h4>
+              <h5>2020 - till now</h5>
+              <p><em>Shokenny Solutions Limited </em></p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Resume Section -->   
+
+
+
+  </div>
+
+  <script>
+    function debounce(func, wait = 20, immediate = true) {
+      var timeout;
+      return function() {
+        var context = this, args = arguments;
+        var later = function() {
+          timeout = null;
+          if (!immediate) func.apply(context, args);
+        };
+        var callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+      };
+    };
+
+    const sliderImages = document.querySelectorAll('.slide-in');
+
+    function checkSlide() {
+      sliderImages.forEach(sliderImage => {
+        // half way through the image
+        const slideInAt = (window.scrollY + window.innerHeight) - sliderImage.height / 2;
+        // bottom of the image
+        const imageBottom = sliderImage.offsetTop + sliderImage.height;
+        const isHalfShown = slideInAt > sliderImage.offsetTop;
+        const isNotScrolledPast = window.scrollY < imageBottom;
+        if (isHalfShown && isNotScrolledPast) {
+          sliderImage.classList.add('active');
+        } else {
+          sliderImage.classList.remove('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', debounce(checkSlide));
+
+  </script>
+
+  <style>
+    html {
+      box-sizing: border-box;
+      background: #4169e1;
+      font-family:'Times New Roman', Times, serif;
+      font-size: 20px;
+      font-weight: 200;
+    }
+    
+    body {
+      margin: 0;
+    }
+    
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+
+    h1 {
+      margin-top: 0;
+    }
+
+    img{
+      max-width:400px;
+    }
+
+    .site-wrap {
+      max-width: 700px;
+      margin: 100px auto;
+      background: white;
+      padding: 40px;
+      text-align: justify;
+    }
+
+    .align-left {
+      float: left;
+      margin-right: 20px;
+    }
+
+    .align-right {
+      float: right;
+      margin-left: 20px;
+    }
+
+    .slide-in {
+      opacity: 0;
+      transition: all .5s;
+    }
+
+    .align-left.slide-in {
+      transform: translateX(-30%) scale(0.95);
+    }
+    
+    .align-right.slide-in {
+      transform: translateX(30%) scale(0.95);
+    }
+
+    .slide-in.active {
+      opacity: 1;
+      transform: translateX(0%) scale(1);
+    }
+
+  </style>
+
+</body>
+</html>
